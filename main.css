@@ -22,7 +22,7 @@ span {
 	opacity: 1;
 	font-size: calc(0.75em + 1.2vw);
 	color: #bcc5d8;
-	animation: appear 1000ms;
+	animation: appear 2000ms;
 }
 
 @keyframes appear {
