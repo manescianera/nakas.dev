@@ -13,16 +13,25 @@ body {
 	background: #1b1d28;
 }
 
-span {
+.soon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
 	opacity: 1;
+	text-decoration: none;
 	font-size: calc(0.75em + 1.2vw);
 	color: #bcc5d8;
+	border-radius: 3px;
+	padding: 1rem;
 	animation: appear 2000ms;
+}
+
+.soon:hover {
+	color: #bf616a;
+	background: #232835;
+	text-decoration: underline;
 }
 
 @keyframes appear {
