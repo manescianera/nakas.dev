@@ -13,7 +13,7 @@ body {
 	background: #1b1d28;
 }
 
-.soon {
+a {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -28,7 +28,7 @@ body {
 	animation: appear 2000ms;
 }
 
-.soon:hover {
+a:hover {
 	color: #bf616a;
 	background: #232835;
 	text-decoration: underline;
