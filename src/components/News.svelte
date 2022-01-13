@@ -11,18 +11,27 @@
     return fetch(`${api}/item/${id}.json`).then(x => x.json())
   }
 
+  const total = 30
   let items = []
   let loaded = false
 
   async function fetchData() {
-    const data = await fetchIds()
+    const ids = await fetchIds()
+    let promises = []
 
-    for (const [i, e] of data.entries()) {
-      if (i < 30) {
-        const item = await fetchItem(e)
-        items.push(item)
-      }
+    for (let i = 0; i < total; i++) {
+      promises.push(fetchItem(ids[i]))
     }
+
+    await Promise.all(promises)
+
+    promises.forEach(p => {
+      p.then(res => {
+        console.log(res)
+        items.push(res)
+      })
+    })
+
     loaded = true
   }
 
