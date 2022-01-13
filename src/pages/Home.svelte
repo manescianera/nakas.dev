@@ -1,18 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+<script>
+	let message = "meanwhile.."
+	let href = "https://github.com/manescianera"
+</script>
 
-* {
-	font-family: 'JetBrains Mono', monospace;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
+<a {href}>{message}</a>
 
-body {
-	width: 100vw;
-	height: 100vh;
-	background: #1b1d28;
-}
-
+<style>
 a {
 	position: absolute;
 	top: 50%;
@@ -42,3 +35,4 @@ a:hover {
 		opacity: 1;
 	}
 }
+</style>
