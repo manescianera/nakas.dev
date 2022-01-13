@@ -1,2 +1,1 @@
-Install deps `npm i`
-Build dev `npm run dev`
+Install deps `npm i` & build for dev `npm run dev`
