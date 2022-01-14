@@ -31,6 +31,7 @@
     diffInMilliSeconds -= minutes * 60
 
     let diff = ''
+
     if (days) {
       diff += days === 1 ? `${days} day ` : `${days} days `
     }
