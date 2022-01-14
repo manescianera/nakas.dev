@@ -1,9 +1,20 @@
 <script>
-  import { onMount } from "svelte"
+  import { onMount } from 'svelte'
 
   const date = Date.parse(new Date().toISOString()) / 1000
-  const title = "top"
-  const api = "https://hacker-news.firebaseio.com/v0"
+  const api = 'https://hacker-news.firebaseio.com/v0'
+  const itemsTotal = 30
+  const freq = 30
+
+  let promises = []
+  let items = []
+  let loaded = false
+
+  let news = {
+    header: undefined,
+    titles: Array(itemsTotal).fill(undefined),
+    footers: Array(itemsTotal).fill(undefined),
+  }
 
   const getAgo = (time) => {
     let diffInMilliSeconds = Math.abs(date - time)
@@ -17,7 +28,7 @@
     const minutes = Math.floor(diffInMilliSeconds / 60) % 60
     diffInMilliSeconds -= minutes * 60
 
-    let diff = ""
+    let diff = ''
     if (days) {
       diff += days === 1 ? `${days} day ` : `${days} days `
     }
@@ -33,6 +44,69 @@
     return diff
   }
 
+  function randomStr(length) {
+    let result = ''
+    const chars = 'abcdefghijklmnopqrstuvwxyz'
+
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+
+    return result
+  }
+
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min)
+  }
+
+  async function randomizeHeader() {
+    news.header = randomStr(3)
+  }
+
+  function randomizeItemTitle() {
+    let title = []
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    while (title.length < randomInt(3, 12)) {
+      let word = randomStr(randomInt(2, 10))
+      word.length > 3
+        ? (word = uppercase.charAt(Math.floor(Math.random() * uppercase.length)) + word)
+        : word
+      title.push(word)
+    }
+
+    return title.join(' ')
+  }
+
+  async function randomizeItemTitles() {
+    for (let i = 0; i < news.titles.length; i++) {
+      news.titles[i] = randomizeItemTitle()
+    }
+  }
+
+  function randomizeItemFooter() {
+    return [
+      randomInt(1, 500),
+      randomStr(2),
+      randomStr(8),
+      randomInt(1, 59),
+      randomStr(5),
+      randomStr(3),
+    ].join(' ')
+  }
+
+  async function randomizeItemFooters() {
+    for (let i = 0; i < news.footers.length; i++) {
+      news.footers[i] = randomizeItemFooter()
+    }
+  }
+
+  async function whileLoading() {
+    randomizeHeader()
+    randomizeItemTitles()
+    randomizeItemFooters()
+  }
+
   async function fetchIds() {
     return fetch(`${api}/topstories.json`).then((x) => x.json())
   }
@@ -41,15 +115,10 @@
     return fetch(`${api}/item/${id}.json`).then((x) => x.json())
   }
 
-  const total = 30
-  let items = []
-  let loaded = false
-
   async function fetchData() {
     const ids = await fetchIds()
-    let promises = []
 
-    for (let i = 0; i < total; i++) {
+    for (let i = 0; i < itemsTotal; i++) {
       promises.push(fetchItem(ids[i]))
     }
 
@@ -64,24 +133,36 @@
     loaded = true
   }
 
-  onMount(fetchData())
+  async function initNews() {
+    fetchData()
+    while (!loaded) {
+      whileLoading()
+      await new Promise((resolve) => setTimeout(resolve, freq))
+    }
+    news.header = 'top'
+  }
+
+  onMount(initNews())
 </script>
 
 <div id="items">
-  <h1 class="title">{title}</h1>
-  {#if loaded}
-    {#each items as item}
-      <div class="item">
-        <a class="item-title" href={item.url} target="_blank">{item.title}</a>
-        <div class="item-footer">
-          {item.score} points by {item.by}
-          {getAgo(item.time)} ago
-        </div>
+  <h1 class="title">{news.header}</h1>
+  {#each Array(itemsTotal) as _, i}
+    <div class="item">
+      <a
+        class="item-title"
+        href={loaded ? items[i].url : ''}
+        target="_blank"
+        style={loaded ? '' : 'color: var(--global-color-white);'}
+        >{loaded ? items[i].title : news.titles[i]}</a
+      >
+      <div class="item-footer">
+        {loaded
+          ? `${items[i].score} points by ${items[i].by} ${getAgo(items[i].time)} ago`
+          : news.footers[i]}
       </div>
-    {/each}
-  {:else}
-    <p>Loading...</p>
-  {/if}
+    </div>
+  {/each}
 </div>
 
 <style>

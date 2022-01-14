@@ -1,7 +1,7 @@
 <script>
-	import router from "page"
-	import Home from "./components/Home.svelte"
-	import News from "./components/News.svelte"
+	import router from 'page'
+	import Home from './components/Home.svelte'
+	import News from './components/News.svelte'
 
 	let page
 
