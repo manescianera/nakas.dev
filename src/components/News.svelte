@@ -12,8 +12,10 @@
   let news = {
     header: undefined,
     items: [],
-    titles: Array(itemsTotal).fill(undefined),
-    footers: Array(itemsTotal).fill(undefined),
+    random: {
+      titles: Array(itemsTotal).fill(undefined),
+      footers: Array(itemsTotal).fill(undefined),
+    },
   }
 
   const getAgo = (time) => {
@@ -79,8 +81,8 @@
   }
 
   async function randomizeItemTitles() {
-    for (let i = 0; i < news.titles.length; i++) {
-      news.titles[i] = randomizeItemTitle()
+    for (let i = 0; i < news.random.titles.length; i++) {
+      news.random.titles[i] = randomizeItemTitle()
     }
   }
 
@@ -96,8 +98,8 @@
   }
 
   async function randomizeItemFooters() {
-    for (let i = 0; i < news.footers.length; i++) {
-      news.footers[i] = randomizeItemFooter()
+    for (let i = 0; i < news.random.footers.length; i++) {
+      news.random.footers[i] = randomizeItemFooter()
     }
   }
 
@@ -154,12 +156,12 @@
         href={loaded ? news.items[i].url : ''}
         target="_blank"
         style={loaded ? '' : 'color: var(--global-color-white);'}
-        >{loaded ? news.items[i].title : news.titles[i]}</a
+        >{loaded ? news.items[i].title : news.random.titles[i]}</a
       >
       <div class="item-footer">
         {loaded
           ? `${news.items[i].score} points by ${news.items[i].by} ${getAgo(news.items[i].time)} ago`
-          : news.footers[i]}
+          : news.random.footers[i]}
       </div>
     </div>
   {/each}
