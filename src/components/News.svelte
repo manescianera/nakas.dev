@@ -89,6 +89,7 @@
   function randomizeItemFooter() {
     return [
       randomInt(1, 500),
+      randomStr(6),
       randomStr(2),
       randomStr(8),
       randomInt(1, 59),
