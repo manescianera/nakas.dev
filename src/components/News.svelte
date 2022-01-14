@@ -7,11 +7,11 @@
   const freq = 30
 
   let promises = []
-  let items = []
   let loaded = false
 
   let news = {
     header: undefined,
+    items: [],
     titles: Array(itemsTotal).fill(undefined),
     footers: Array(itemsTotal).fill(undefined),
   }
@@ -126,7 +126,7 @@
 
     promises.forEach((p) => {
       p.then((res) => {
-        items.push(res)
+        news.items.push(res)
       })
     })
 
@@ -151,14 +151,14 @@
     <div class="item">
       <a
         class="item-title"
-        href={loaded ? items[i].url : ''}
+        href={loaded ? news.items[i].url : ''}
         target="_blank"
         style={loaded ? '' : 'color: var(--global-color-white);'}
-        >{loaded ? items[i].title : news.titles[i]}</a
+        >{loaded ? news.items[i].title : news.titles[i]}</a
       >
       <div class="item-footer">
         {loaded
-          ? `${items[i].score} points by ${items[i].by} ${getAgo(items[i].time)} ago`
+          ? `${news.items[i].score} points by ${news.items[i].by} ${getAgo(news.items[i].time)} ago`
           : news.footers[i]}
       </div>
     </div>
