@@ -173,7 +173,7 @@
   #items {
     padding: var(--global-padding);
     margin: auto;
-    width: 80vw;
+    width: 60vw;
   }
 
   .title {
