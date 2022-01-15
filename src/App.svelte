@@ -1,19 +1,9 @@
 <script>
-	import router from 'page'
-	import Home from './components/Home.svelte'
-	import News from './components/News.svelte'
-
-	let page
-
-	router('/', () => page = Home)
-	router('/news', () => page = News)
-
-	router.start()
+  import Home from './components/Home.svelte'
 </script>
 
-
 <main>
-	<div id="content">
-		<svelte:component this={page} />
-	</div>
+  <div id="content">
+    <Home />
+  </div>
 </main>
