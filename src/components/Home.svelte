@@ -1,6 +1,6 @@
 <script>
   let message = 'meanwhile..'
-  let href = 'https://github.com/manescianera'
+  let href = '/news'
 </script>
 
 <a {href}>{message}</a>

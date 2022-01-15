@@ -115,7 +115,7 @@
     }
   }
 
-  async function whileLoading() {
+  async function randomizeData() {
     randomizeHeader()
     randomizeItemTitles()
     randomizeItemFooters()
@@ -145,25 +145,25 @@
       })
     })
 
-    env.promises = []
-    env.news.pages.current = page
+    env.news.header = 'top'
     env.loaded = true
   }
 
-  async function initNews(page) {
-    ids = !ids ? await fetchIds() : ids
-    env = new Environment()
-    fetchData(page)
-
+  async function randomizeWhileLoading() {
     while (!env.loaded) {
-      whileLoading()
+      randomizeData()
       await new Promise((resolve) => setTimeout(resolve, freq))
     }
-
-    env.news.header = 'top'
   }
 
-  onMount(initNews(0))
+  async function initNews(page) {
+    env = new Environment()
+    randomizeWhileLoading()
+    ids = !ids ? await fetchIds() : ids
+    fetchData(page)
+  }
+
+  onMount(() => initNews(0))
 </script>
 
 <div id="items">
