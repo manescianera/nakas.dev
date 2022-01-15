@@ -204,6 +204,7 @@
     padding: var(--global-padding);
     margin: auto;
     width: 60vw;
+    counter-reset: item -1;
   }
 
   .title {
@@ -212,12 +213,25 @@
   }
 
   .item {
+    position: relative;
     padding: calc(var(--global-padding) / 2);
     border-radius: var(--global-border-radius);
+    counter-increment: item;
   }
 
   .item:hover {
     background: var(--global-color-bg-secondary);
+  }
+
+  .item:hover::before {
+    position: absolute;
+    left: -2.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    content: counter(item);
+    font-size: 1.2rem;
+    color: var(--global-color-bg-secondary);
   }
 
   .item-title {
