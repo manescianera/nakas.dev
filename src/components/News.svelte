@@ -5,18 +5,28 @@
   const api = 'https://hacker-news.firebaseio.com/v0'
   const itemsTotal = 30
   const freq = 30
+  let ids = undefined
 
-  let promises = []
-  let loaded = false
-
-  let news = {
-    header: undefined,
-    items: [],
-    random: {
-      titles: Array(itemsTotal).fill(undefined),
-      footers: Array(itemsTotal).fill(undefined),
-    },
+  class Environment {
+    constructor() {
+      this.loaded = false
+      this.promises = []
+      this.news = {
+        header: undefined,
+        items: [],
+        random: {
+          titles: Array(itemsTotal).fill(undefined),
+          footers: Array(itemsTotal).fill(undefined),
+        },
+        pages: {
+          list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          current: undefined,
+        },
+      }
+    }
   }
+
+  let env = new Environment()
 
   const getAgo = (time) => {
     let diffInMilliSeconds = Math.abs(date - time)
@@ -63,7 +73,7 @@
   }
 
   async function randomizeHeader() {
-    news.header = randomStr(3)
+    env.news.header = randomStr(3)
   }
 
   function randomizeItemTitle() {
@@ -82,8 +92,8 @@
   }
 
   async function randomizeItemTitles() {
-    for (let i = 0; i < news.random.titles.length; i++) {
-      news.random.titles[i] = randomizeItemTitle()
+    for (let i = 0; i < env.news.random.titles.length; i++) {
+      env.news.random.titles[i] = randomizeItemTitle()
     }
   }
 
@@ -100,8 +110,8 @@
   }
 
   async function randomizeItemFooters() {
-    for (let i = 0; i < news.random.footers.length; i++) {
-      news.random.footers[i] = randomizeItemFooter()
+    for (let i = 0; i < env.news.random.footers.length; i++) {
+      env.news.random.footers[i] = randomizeItemFooter()
     }
   }
 
@@ -119,51 +129,71 @@
     return fetch(`${api}/item/${id}.json`).then((x) => x.json())
   }
 
-  async function fetchData() {
-    const ids = await fetchIds()
+  async function fetchData(page) {
+    const start = page * itemsTotal
+    const finish = start + itemsTotal
 
-    for (let i = 0; i < itemsTotal; i++) {
-      promises.push(fetchItem(ids[i]))
+    for (let i = start; i < finish; i++) {
+      env.promises.push(fetchItem(ids[i]))
     }
 
-    await Promise.all(promises)
+    await Promise.all(env.promises)
 
-    promises.forEach((p) => {
+    env.promises.forEach((p) => {
       p.then((res) => {
-        news.items.push(res)
+        env.news.items.push(res)
       })
     })
 
-    loaded = true
+    env.promises = []
+    env.news.pages.current = page
+    env.loaded = true
   }
 
-  async function initNews() {
-    fetchData()
-    while (!loaded) {
+  async function initNews(page) {
+    ids = !ids ? await fetchIds() : ids
+    env = new Environment()
+    fetchData(page)
+
+    while (!env.loaded) {
       whileLoading()
       await new Promise((resolve) => setTimeout(resolve, freq))
     }
-    news.header = 'top'
+
+    env.news.header = 'top'
   }
 
-  onMount(initNews())
+  onMount(initNews(0))
 </script>
 
 <div id="items">
-  <h1 class="title">{news.header}</h1>
+  <h1 class="title">
+    {env.news.header}
+    {#each env.news.pages.list as page}
+      <span
+        class="page"
+        style={page == env.news.pages.current ? 'color: var(--global-color-red)' : ''}
+        on:click={initNews(page)}
+      >
+        {env.loaded ? `${page} ` : randomInt(0, 9)}
+      </span>
+    {/each}
+  </h1>
   {#each Array(itemsTotal) as _, i}
     <div class="item">
       <a
         class="item-title"
-        href={loaded ? news.items[i].url : ''}
+        href={env.loaded ? env.news.items[i].url : ''}
         target="_blank"
-        style={loaded ? '' : 'color: var(--global-color-white);'}
-        >{loaded ? news.items[i].title : news.random.titles[i]}</a
+        style={env.loaded ? '' : 'color: var(--global-color-white);'}
+        >{env.loaded ? env.news.items[i].title : env.news.random.titles[i]}</a
       >
       <div class="item-footer">
-        {loaded
-          ? `${news.items[i].score} points by ${news.items[i].by} ${getAgo(news.items[i].time)} ago`
-          : news.random.footers[i]}
+        {env.loaded
+          ? `${env.news.items[i].score} points by ${env.news.items[i].by} ${getAgo(
+              env.news.items[i].time
+            )} ago`
+          : env.news.random.footers[i]}
       </div>
     </div>
   {/each}
@@ -211,5 +241,14 @@
   .item-footer {
     color: var(--global-color-dimmed);
     font-size: 0.8rem;
+  }
+
+  .page {
+    color: var(--global-color-dimmed);
+  }
+
+  .page:hover {
+    color: var(--global-color-red);
+    cursor: pointer;
   }
 </style>
