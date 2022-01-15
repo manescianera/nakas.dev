@@ -146,6 +146,7 @@
     })
 
     env.news.header = 'top'
+    env.news.pages.current = page
     env.loaded = true
   }
 
