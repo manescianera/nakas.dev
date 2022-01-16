@@ -15,8 +15,8 @@
         header: undefined,
         items: [],
         random: {
-          titles: Array(itemsTotal).fill(undefined),
-          footers: Array(itemsTotal).fill(undefined),
+          titles: Array.from({ length: 30 }, () => randomizeItemTitle()),
+          footers: Array.from({ length: 30 }, () => randomizeItemFooter()),
         },
         pages: {
           list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -91,12 +91,6 @@
     return title.join(' ')
   }
 
-  async function randomizeItemTitles() {
-    for (let i = 0; i < env.news.random.titles.length; i++) {
-      env.news.random.titles[i] = randomizeItemTitle()
-    }
-  }
-
   function randomizeItemFooter() {
     return [
       randomInt(1, 500),
@@ -107,18 +101,6 @@
       randomStr(5),
       randomStr(3),
     ].join(' ')
-  }
-
-  async function randomizeItemFooters() {
-    for (let i = 0; i < env.news.random.footers.length; i++) {
-      env.news.random.footers[i] = randomizeItemFooter()
-    }
-  }
-
-  async function randomizeData() {
-    randomizeHeader()
-    randomizeItemTitles()
-    randomizeItemFooters()
   }
 
   async function fetchIds() {
@@ -150,17 +132,28 @@
     env.loaded = true
   }
 
-  async function randomizeWhileLoading() {
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5)
+  }
+
+  async function shuffleRandomWhileLoading() {
     while (!env.loaded) {
-      randomizeData()
+      env.news.random.titles = shuffle(env.news.random.titles)
+      env.news.random.footers = shuffle(env.news.random.footers)
+      randomizeHeader()
       await new Promise((resolve) => setTimeout(resolve, freq))
     }
   }
 
   async function initNews(page) {
     env = new Environment()
-    randomizeWhileLoading()
-    ids = !ids ? await fetchIds() : ids
+    randomizeHeader()
+    shuffleRandomWhileLoading()
+
+    if (!ids) {
+      ids = await fetchIds()
+    }
+
     fetchData(page)
   }
 
