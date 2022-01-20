@@ -82,9 +82,7 @@
 
     while (title.length < randomInt(3, 12)) {
       let word = randomStr(randomInt(2, 10))
-      word.length > 3
-        ? (word = uppercase.charAt(Math.floor(Math.random() * uppercase.length)) + word)
-        : word
+      word.length > 3 ? (word = uppercase.charAt(Math.floor(Math.random() * uppercase.length)) + word) : word
       title.push(word)
     }
 
@@ -92,15 +90,7 @@
   }
 
   function randomizeItemFooter() {
-    return [
-      randomInt(1, 500),
-      randomStr(6),
-      randomStr(2),
-      randomStr(8),
-      randomInt(1, 59),
-      randomStr(5),
-      randomStr(3),
-    ].join(' ')
+    return [randomInt(1, 500), randomStr(6), randomStr(2), randomStr(8), randomInt(1, 59), randomStr(5), randomStr(3)].join(' ')
   }
 
   async function fetchIds() {
@@ -164,30 +154,18 @@
   <h1 class="title">
     {env.news.header}
     {#each env.news.pages.list as page}
-      <span
-        class="page"
-        style={page == env.news.pages.current ? 'color: var(--global-color-red)' : ''}
-        on:click={initNews(page)}
-      >
+      <span class="page" style={page == env.news.pages.current ? 'color: var(--global-color-red)' : ''} on:click={initNews(page)}>
         {env.loaded ? `${page} ` : randomInt(0, 9)}
       </span>
     {/each}
   </h1>
   {#each Array(itemsTotal) as _, i}
     <div class="item">
-      <a
-        class="item-title"
-        href={env.loaded ? env.news.items[i].url : ''}
-        target="_blank"
-        style={env.loaded ? '' : 'color: var(--global-color-white);'}
+      <a class="item-title" href={env.loaded ? env.news.items[i].url : ''} target="_blank" style={env.loaded ? '' : 'color: var(--global-color-white);'}
         >{env.loaded ? env.news.items[i].title : env.news.random.titles[i]}</a
       >
       <div class="item-footer">
-        {env.loaded
-          ? `${env.news.items[i].score} points by ${env.news.items[i].by} ${getAgo(
-              env.news.items[i].time
-            )} ago`
-          : env.news.random.footers[i]}
+        {env.loaded ? `${env.news.items[i].score} points by ${env.news.items[i].by} ${getAgo(env.news.items[i].time)} ago` : env.news.random.footers[i]}
       </div>
     </div>
   {/each}
@@ -197,7 +175,7 @@
   #items {
     padding: var(--global-padding);
     margin: auto;
-    width: 60vw;
+    width: 100%;
     counter-reset: item -1;
   }
 

@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 :root {
-  --global-font-family: "JetBrains Mono", monospace;
+  --global-font-family: 'JetBrains Mono', monospace;
   --global-color-bg-primary: #1b1d28;
   --global-color-bg-secondary: #232835;
   --global-color-white: #bcc5d8;
@@ -18,8 +18,18 @@
   padding: 0;
 }
 
-#content {
-  width: 100%;
-  min-height: 100vh;
+body {
   background: var(--global-color-bg-primary);
+}
+
+#content {
+  width: 90vw;
+  min-height: 100vh;
+  margin: auto;
+}
+
+@media screen and (min-width: 900px) {
+  #content {
+    width: 60vw;
+  }
 }
