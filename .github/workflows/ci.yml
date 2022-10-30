@@ -1,0 +1,31 @@
+name: CI
+on: [push]
+
+jobs:
+  integrity:
+    name: Verify integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: Linters
+        uses: golangci/golangci-lint-action@v3.2.0
+        with:
+          args: --verbose
+
+      - name: Security checks
+        run: |
+          curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $(go env GOPATH)/bin latest
+          gosec ./...
+
+      - name: Punisher
+        run: go test ./... -v
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
