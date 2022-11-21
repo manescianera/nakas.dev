@@ -1,0 +1,63 @@
+:root {
+  --color-background: #bcc5d8;
+  --color-text: #1b1d28;
+  --color-link: #bf616a;
+  --color-link-background-hover: #b3bbcc;
+}
+
+* {
+  font-family: 'JetBrains Mono', monospace;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  background: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: var(--color-text);
+  margin: 1.5rem 0;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  background: var(--color-link-background-hover);
+}
+
+div {
+  text-align: justify;
+  word-wrap: break-word;
+  width: 24rem;
+}
+
+a#srsly {
+  position: absolute;
+  display: none;
+  left: -7rem;
+  bottom: 1.3rem;
+
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+p:last-of-type {
+  position: relative;
+}
+
+a#sql:hover {
+  cursor: pointer;
+}
