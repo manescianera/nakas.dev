@@ -21,10 +21,10 @@ func init() {
 
 func main() {
 	const (
-		colorBackground = "#bcc5d8"
-		colorText       = "#1b1d28"
-		colorLink       = "#bf616a"
-		colorLinkHover  = "#bf616a"
+		colorBackground          = "#bcc5d8"
+		colorText                = "#1b1d28"
+		colorLink                = "#bf616a"
+		colorLinkBackgroundHover = "#b3bbcc"
 	)
 	style := `
 		* {
@@ -51,9 +51,8 @@ func main() {
 			text-decoration: none;
 		}
 		a:hover {
-			color: ` + colorLinkHover + `;
 			text-decoration: underline;
-			background-blend-mode: darken;
+			background: ` + colorLinkBackgroundHover + `;
 		}
 		div {
 			text-align: justify;
@@ -95,7 +94,7 @@ func main() {
 					<a href="https://linkedin.com/in/žygimantas-nakas-a55baa1a9" target="_blank">linkedin</a>
 					or <a href="https://t.me/manescianera" target="_blank">telegram</a>,
 					or of course you just can go all sneaky - and spy
-					on me on<a href="https://github.com/manescianera" target="_blank"> github</a>
+					on me on <a href="https://github.com/manescianera" target="_blank">github</a>
 				</p>
 				<p>
 					i care about <a href="https://go.dev/" target="_blank">go</a>,
@@ -110,11 +109,11 @@ func main() {
 	`
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, html)
+		fmt.Fprint(w, html)
 	})
 
 	http.HandleFunc("/sql", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, `
+		fmt.Fprint(w, `
 			<!DOCTYPE html>
 			<html lang="en">
 				<head>
