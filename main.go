@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var (
@@ -108,11 +111,13 @@ func main() {
 		</html>
 	`
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, html)
 	})
 
-	http.HandleFunc("/sql", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/sql", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, `
 			<!DOCTYPE html>
 			<html lang="en">
@@ -129,9 +134,16 @@ func main() {
 		`)
 	})
 
+	srv := http.Server{
+		Handler:      r,
+		Addr:         fmt.Sprintf(":%d", port),
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
+
 	if crt != "" && key != "" {
-		log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%v", port), crt, key, nil))
+		log.Fatal(srv.ListenAndServeTLS(crt, key))
 	} else {
-		log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", port), nil))
+		log.Fatal(srv.ListenAndServe())
 	}
 }
