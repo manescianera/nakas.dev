@@ -1,8 +1,11 @@
 package main
 
 import (
+	"log"
 	"net/http"
 )
+
+const addr = "0.0.0.0:8043"
 
 func main() {
 	router := NewRouter()
@@ -19,5 +22,6 @@ func main() {
 		CVTemplate(cv).Render(r.Context(), w)
 	})
 
-	http.ListenAndServe(":8080", router)
+	log.Println("starting server on " + addr)
+	log.Fatalf("error starting server: %v", http.ListenAndServe(addr, router))
 }
