@@ -1,0 +1,60 @@
+package main
+
+templ hello() {
+    <style type="text/css">
+        .hello {
+            display: flex;
+            flex-direction: column;
+
+            font-size: 1.2em;
+
+            width: 32rem;
+            padding: 2em 4em;
+
+            background-color: #1f1d2e;
+            color: rgba(224, 222, 244, 0.8);
+            border-radius: 10px;
+        }
+        a {
+            color: #d7827e;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="hello">
+        @greeting() { @me("Žygimantas") }
+
+        <p>I am a Go software engineer.</p>
+        <p>Love messing around and experimenting with various tools and 
+        technologies. Mostly live in the CLI.</p>
+        <p>Go is my favourite tool (even this website is written in Go), 
+        neovim is my go to editor, home is the best place to work.</p>
+        <p>For more of a professional profile, check out my <a href="/cv">CV</a>
+        or reach me at <a href="mailto:root@nakas.dev">root@nakas.dev</a>.</p>
+    </div>
+}
+
+templ HelloTemplate() {
+    <style type="text/css">
+        html {
+            overflow-y: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #575279;
+            color: #797593;
+            font-family: "JetBrains Mono", monospace;
+            height: 100vh;
+        }
+    </style>
+
+    <html><body> @hello() </body></html>
+}
+

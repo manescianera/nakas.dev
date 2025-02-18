@@ -1,0 +1,90 @@
+name: Žygimantas
+email: root@nakas.dev
+location:  🇪🇺
+description: >
+    Innovative Go software engineer with 5+ years of experience specializing in 
+    data engineering and distributed systems. Passionate about leveraging Go's
+    concurrency model and performance capabilities to build scalable, efficient
+    data pipelines and analytics platforms.
+    
+    Proficient in Go's standard library and popular frameworks like Echo, Gin, 
+    or gRPC for building robust microservices and APIs. Architected and implemented 
+    high-throughput ETL processes and realtime streaming solutions.
+
+    Worked on architectural overhauls and optimizations taking advantage of Go's 
+    strengths in performance. Extensive experience deploying and managing 
+    applications on cloud and data platforms such as AWS and Snowflake. Skilled
+    in containerization using Docker.
+
+    Proven track record of delivering high-quality software solutions that meet
+    business requirements and exceed customer expectations.
+    
+jobs:
+  - title: Software Engineer
+    company: External Tables
+    start: Aug 2022 
+    end: Present 
+    description: >
+      Started working in a startup with the same team. Got more responsibilities
+      and a fast-paced environment. Honed my skills both with Go software development
+      and data engineering. Architected, improved, and maintained various data systems
+      and pipelines. Deployed various applications on AWS and Snowflake. Had a chance
+      to adapt to very restrictive environments and work with previously untouched 
+      tools like Ruby on Rails and Java.
+    skills:
+      - Go
+      - Snowflake
+      - Docker
+      - AWS
+      - Python
+      - Postgres
+      - dbt
+      - Terraform
+  - title: Software Engineer
+    company: Smart Brands Lab
+    start: Jun 2021 
+    end: Aug 2022 
+    description: >
+      This is where I got into a serious and experienced software team. Probably 
+      the most challenging part of my career but also the most fruitful. I've 
+      worked on various projects that involved building and maintaining complex 
+      systems, data pipelines, and APIs. Here, I've learned teamwork, communication,
+      and problem-solving skills that have been invaluable in my career.
+    skills:
+      - Go
+      - Snowflake
+      - Docker
+      - AWS
+      - Python
+      - Postgres
+      - dbt
+      - Terraform
+  - title: Software Engineer
+    company: Freelance 
+    start: Dec 2020 
+    end: Aug 2022 
+    description: >
+      During the pandemic I had a bit more time which I decided to use to diversify 
+      my skills and get better at Go. I've worked on various projects from triangular
+      arbitrage calculations for cryptocurrencies to web scraping and data processing.
+      Vast majority of my work was done in Go. This is where I've learned communicating
+      with customers and building software that is easy to use and understand.
+    skills:
+      - Go
+      - Docker
+      - Postgres
+      - Digital Ocean
+  - title: Junior Software Developer
+    company: Hostinger
+    start: Oct 2019 
+    end: May 2021 
+    description: >
+      This is where I've started my career as a software developer from a little
+      hobby. While our team was mainly focused on digital marketing, I was developing
+      all kinds of custom solutions for our team to use. This is also where I've
+      started learning and using Go.
+    skills:
+      - Go
+      - Docker
+      - Postgres
+      - Web Development
