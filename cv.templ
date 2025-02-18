@@ -1,0 +1,231 @@
+package main
+
+import (
+    "fmt"
+    "strings"
+)
+
+templ me(name string) {
+    <style type="text/css">
+       .name {
+            color: #d7827e;
+        }
+    </style>
+
+    <i class="name">{ name }</i>
+}
+
+templ greeting() {
+    <style type="text/css">
+        .greeting {
+            font-size: 2em;
+            font-weight: bold;
+            color: #b4637a; 
+        }
+    </style>
+
+    <h1 class="greeting">Hi! I'm { children... }.</h1>
+}
+
+templ location(location string) {
+    <p class="location">Based in { location }</p>
+}
+
+templ email(email string) {
+    <style type="text/css">
+        .email {
+            color: #d7827e;
+            text-decoration: none;
+        }
+        .email:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <p>Reach me at 
+        <a class="email" 
+           href={ templ.SafeURL(fmt.Sprintf("mailto:%s", email)) }
+        >
+            { email }
+        </a>
+    </p>
+}
+
+templ info(loc, eml string) {
+    <style type="text/css">
+        .info {
+            font-size: 1em;
+            background-color: #191724;
+            border-radius: 5px;
+            padding: 0.1em 2em;
+        }
+    </style>
+
+    <div class="info">
+        @location(loc)
+        @email(eml)
+    </div>
+}
+
+templ header(name, location, email string) {
+    <style type="text/css">
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+    <div class="header">
+        @greeting() { @me(name) }
+        @info(location, email)
+    </div>
+}
+
+templ description(description string) {
+    <style type="text/css">
+        .description {
+            font-size: 1.2em;
+            color: rgba(224,222,244, 0.8);
+        }
+    </style>
+
+    for _, d := range strings.Split(description, "\n") {
+        <p class="description">{ d }</p>
+    }
+}
+
+templ skill(skill string) {
+    <style type="text/css">
+        .skill {
+            border-radius: 5px;
+            background-color: rgba(49,116,143, 0.75);
+            color: black;
+            font-size: 1em;
+            padding: 0.2em 0.5em;
+            margin-right: 0.5em;
+        }
+    </style>
+
+    <div class="skill">{ skill }</div>
+}
+
+templ skills(skills []string) {
+    <style type="text/css">
+         .skills {
+            display: flex;
+            padding: 1em 0;
+        }
+    </style>
+
+    <div class="skills">
+        for _, s := range skills {
+            @skill(s)
+        }
+    </div>
+}
+
+templ jobTitle(title, company string) {
+    <style type="text/css">
+        .job-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #b4637a;
+        }
+    </style>
+
+    <p class="job-title">{ title } at <i>{ company }</i></p>
+}
+
+templ startEnd(start, end string) {
+    <style type="text/css">
+        .text-range {
+            color: #9893a5;
+            font-size: 1.2em;
+        }
+    </style>
+
+    <p class="text-range">{ start } -> { end }</p>
+}
+
+templ jobHeader(title, company, start, end string) {
+    <style type="text/css">
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+
+    <div class="job-header">
+        @jobTitle(title, company)
+        @startEnd(start, end)
+    </div>
+}
+
+templ jobDescription(description string) {
+    <style type="text/css">
+        .description {
+            font-size: 1em;
+        }
+    </style>
+
+    <p class="description">{ description }</p>
+}
+
+templ job(job Job) {
+    <style type="text/css">
+        .job {
+            background-color: #191724;
+            margin-top: 1em;
+            padding: 1em 3em;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="job">
+        @jobHeader(job.Title, job.Company, job.Start, job.End)
+        @jobDescription(job.Description)
+        @skills(job.Skills)
+    </div>
+}
+
+templ jobs(jobs []Job) {
+    for _, j := range jobs {
+        @job(j)
+    }
+}
+
+templ cv(data *CV) {
+    <style type="text/css">
+        .cv {
+            display: flex;
+            flex-direction: column;
+
+            width: 56rem;
+            margin: 4em auto; 
+            padding: 2em 4em;
+
+            background-color: #1f1d2e;
+            border-radius: 10px;
+        }
+    </style>
+
+    <div class="cv">
+        @header(data.Name, data.Location, data.Email)
+        @description(data.Description)
+        @jobs(data.Jobs)
+    </div>
+}
+
+templ CVTemplate(data *CV) {
+    <style type="text/css">
+        body {
+            background-color: #575279;
+            color: #797593;
+            font-family: "JetBrains Mono", monospace;
+        }
+    </style>
+
+    <html><body> @cv(data) </body></html>
+}
+
