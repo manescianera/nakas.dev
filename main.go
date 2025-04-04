@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-const addr = "0.0.0.0:8080"
+const addr = "0.0.0.0:8043"
 
 func main() {
 	router := NewRouter()
