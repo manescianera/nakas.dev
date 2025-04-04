@@ -2,23 +2,18 @@ name: Žygimantas
 email: root@nakas.dev
 location:  🇪🇺
 description: >
-    Innovative Go software engineer with 5+ years of experience specializing in 
-    data engineering and distributed systems. Passionate about leveraging Go's
-    concurrency model and performance capabilities to build scalable, efficient
-    data pipelines and analytics platforms.
-    
-    Proficient in Go's standard library and popular frameworks like Echo, Gin, 
-    or gRPC for building robust microservices and APIs. Architected and implemented 
-    high-throughput ETL processes and realtime streaming solutions.
+  I am a software engineer with 5+ years of experience specializing in backend and data engineering.
+  Passionate about designing and building scalable, efficient systems that solve complex business 
+  problems and enable data-driven decision-making.
 
-    Worked on architectural overhauls and optimizations taking advantage of Go's 
-    strengths in performance. Extensive experience deploying and managing 
-    applications on cloud and data platforms such as AWS and Snowflake. Skilled
-    in containerization using Docker.
+  Skilled in architecting and implementing high-throughput ETL processes, real-time data pipelines,
+  and robust APIs. Experienced in optimizing backend systems for performance and reliability,
+  leveraging modern programming languages like Python and Go.
 
-    Proven track record of delivering high-quality software solutions that meet
-    business requirements and exceed customer expectations.
-    
+  Extensive experience deploying and managing applications on cloud platforms, including AWS, and
+  working with data platforms like Snowflake. Proficient in containerization and orchestration tools
+  such as Docker to streamline development and deployment workflows.
+        
 jobs:
   - title: Software Engineer
     company: External Tables
@@ -26,17 +21,17 @@ jobs:
     end: Mar 2025 
     description: >
       Started working in a startup with the same team. Got more responsibilities
-      and a fast-paced environment. Honed my skills both with Go software development
+      and a fast-paced environment. Honed my skills both in software development
       and data engineering. Architected, improved, and maintained various data systems
       and pipelines. Deployed various applications on AWS and Snowflake. Had a chance
       to adapt to very restrictive environments and work with previously untouched 
       tools like Ruby on Rails and Java.
     skills:
       - Go
+      - Python
       - Snowflake
       - Docker
       - AWS
-      - Python
       - Postgres
       - dbt
       - Terraform
@@ -52,10 +47,10 @@ jobs:
       and problem-solving skills that have been invaluable in my career.
     skills:
       - Go
+      - Python
       - Snowflake
       - Docker
       - AWS
-      - Python
       - Postgres
       - dbt
       - Terraform
@@ -65,26 +60,35 @@ jobs:
     end: Jun 2021 
     description: >
       During the pandemic I had a bit more time which I decided to use to diversify 
-      my skills and get better at Go. I've worked on various projects from triangular
-      arbitrage calculations for cryptocurrencies to web scraping and data processing.
-      Vast majority of my work was done in Go. This is where I've learned communicating
-      with customers and building software that is easy to use and understand.
+      my skills and get better at software development. I've worked on various projects 
+      from triangular arbitrage calculations for cryptocurrencies to web scraping and
+      data processing. Vast majority of my work was done in Go or Python. This is where
+      I've learned communicating with customers and building software that is easy to use
+      and understand.
     skills:
       - Go
+      - Python
       - Docker
       - Postgres
       - Digital Ocean
-  - title: Junior Software Developer
+  - title: Digital Marketing Specialist
     company: Hostinger
     start: Oct 2019 
     end: May 2021 
     description: >
-      This is where I've started my career as a software developer from a little
-      hobby. While our team was mainly focused on digital marketing, I was developing
-      all kinds of custom solutions for our team to use. This is also where I've
-      started learning and using Go.
+      As strange as it sounds looking at the job title - this is the point in my career where
+      software development started to become something more than a hobby. While I've worked on
+      various issues related to digital marketing, due to the format of our team I was a "go to"
+      person for all the things related to tech. These included writting blog posts about various
+      technologies, creating custom tools for our team, or even websites depending on marketing
+      needs. This is where I had a chance to learn about web development and use tools like Go and
+      Python.
     skills:
+      - Digital Marketing
+      - Interteam Communication
+      - Web Development
       - Go
+      - Python
       - Docker
       - Postgres
-      - Web Development
+
