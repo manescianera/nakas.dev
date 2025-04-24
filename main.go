@@ -3,11 +3,17 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 )
 
-const addr = "0.0.0.0:8043"
-
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	addr := "0.0.0.0:" + port 
+
 	router := NewRouter()
 
 	router.Add("/", func(w http.ResponseWriter, r *http.Request) {

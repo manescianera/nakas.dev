@@ -1,0 +1,16 @@
+services:
+  nakas.dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: nakas.dev 
+    restart: unless-stopped
+    networks:
+      - web
+    environment:
+      - PORT=8080
+
+networks:
+  web:
+    external: true
+
