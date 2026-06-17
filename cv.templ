@@ -5,6 +5,16 @@ import (
     "strings"
 )
 
+func paragraphs(text string) []string {
+    var result []string
+    for _, line := range strings.Split(text, "\n") {
+        if trimmed := strings.TrimSpace(line); trimmed != "" {
+            result = append(result, trimmed)
+        }
+    }
+    return result
+}
+
 templ me(name string) {
     <style type="text/css">
        .name {
@@ -89,7 +99,7 @@ templ description(description string) {
         }
     </style>
 
-    for _, d := range strings.Split(description, "\n") {
+    for _, d := range paragraphs(description) {
         <p class="description">{ d }</p>
     }
 }
@@ -102,7 +112,10 @@ templ skill(skill string) {
             color: black;
             font-size: 1em;
             padding: 0.2em 0.5em;
-            margin-right: 0.5em;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
     </style>
 
@@ -113,6 +126,8 @@ templ skills(skills []string) {
     <style type="text/css">
          .skills {
             display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
             padding: 1em 0;
         }
     </style>
@@ -169,7 +184,9 @@ templ jobDescription(description string) {
         }
     </style>
 
-    <p class="description">{ description }</p>
+    for _, d := range paragraphs(description) {
+        <p class="description">{ d }</p>
+    }
 }
 
 templ job(job Job) {

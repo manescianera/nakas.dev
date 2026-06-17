@@ -1,9 +1,9 @@
 name: Žygimantas
 email: root@nakas.dev
-location:  🇪🇺
+location: 🇪🇺
 description: >
-  I am a software engineer with 5+ years of experience specializing in backend and data engineering.
-  Passionate about designing and building scalable, efficient systems that solve complex business 
+  I am a software engineer with 6+ years of experience specializing in backend and data engineering.
+  Passionate about designing and building scalable, efficient systems that solve complex business
   problems and enable data-driven decision-making.
 
   Skilled in architecting and implementing high-throughput ETL processes, real-time data pipelines,
@@ -13,18 +13,51 @@ description: >
   Extensive experience deploying and managing applications on cloud platforms, including AWS, and
   working with data platforms like Snowflake. Proficient in containerization and orchestration tools
   such as Docker to streamline development and deployment workflows.
-        
+
+  Comfortable delivering projects end-to-end, from initial concept to production deployment.
+  Led multiple initiatives in data-intensive environments and cutting-edge AI SaaS, driving
+  key technical decisions that shaped product direction and evolution.
+
 jobs:
   - title: Software Engineer
+    company: Foxy AI
+    start: Sep 2025
+    end: May 2026
+    description: >
+      High-velocity AI startup based in San Francisco building a leading AI media generation
+      platform. Took ownership of multiple high-impact initiatives, influencing both product
+      direction and technical architecture. Led decisions on system design, ensuring scalability,
+      reliability, and performance for hundreds of thousands of users.
+
+      Worked across the full stack, contributing to areas including billing systems, vector search
+      infrastructure, UI/UX decisions, and internal admin tools. Thrived in a polyglot environment,
+      primarily leveraging Go for backend systems while delivering production features in TypeScript.
+      Consistently drove projects from concept to execution in a fast-paced, ambiguous setting.
+
+      Mastering frontier AI tools for software engineering, embracing the shift in how software is
+      built and consistently applying cutting-edge methods to maximize efficiency and impact
+    skills:
+      - Go
+      - Typescript
+      - System architecture
+      - Project management
+      - Context engineering
+      - AI assisted development
+      - Data pipelines
+      - Docker
+      - Postgres
+      - Neon
+      - Railway
+  - title: Software Engineer
     company: External Tables
-    start: Aug 2022 
-    end: Mar 2025 
+    start: Aug 2022
+    end: Mar 2025
     description: >
       Started working in a startup with the same team. Got more responsibilities
       and a fast-paced environment. Honed my skills both in software development
       and data engineering. Architected, improved, and maintained various data systems
       and pipelines. Deployed various applications on AWS and Snowflake. Had a chance
-      to adapt to very restrictive environments and work with previously untouched 
+      to adapt to very restrictive environments and work with previously untouched
       tools like Ruby on Rails and Java.
     skills:
       - Go
@@ -37,12 +70,12 @@ jobs:
       - Terraform
   - title: Software Engineer
     company: Smart Brands Lab
-    start: Jun 2021 
-    end: Aug 2022 
+    start: Jun 2021
+    end: Aug 2022
     description: >
-      This is where I got into a serious and experienced software team. Probably 
-      the most challenging part of my career but also the most fruitful. I've 
-      worked on various projects that involved building and maintaining complex 
+      This is where I got into a serious and experienced software team. Probably
+      the most challenging part of my career but also the most fruitful. I've
+      worked on various projects that involved building and maintaining complex
       systems, data pipelines, and APIs. Here, I've learned teamwork, communication,
       and problem-solving skills that have been invaluable in my career.
     skills:
@@ -55,12 +88,12 @@ jobs:
       - dbt
       - Terraform
   - title: Software Engineer
-    company: Freelance 
-    start: Dec 2020 
-    end: Jun 2021 
+    company: Freelance
+    start: Dec 2020
+    end: Jun 2021
     description: >
-      During the pandemic I had a bit more time which I decided to use to diversify 
-      my skills and get better at software development. I've worked on various projects 
+      During the pandemic I had a bit more time which I decided to use to diversify
+      my skills and get better at software development. I've worked on various projects
       from triangular arbitrage calculations for cryptocurrencies to web scraping and
       data processing. Vast majority of my work was done in Go or Python. This is where
       I've learned communicating with customers and building software that is easy to use
@@ -73,8 +106,8 @@ jobs:
       - Digital Ocean
   - title: Digital Marketing Specialist
     company: Hostinger
-    start: Oct 2019 
-    end: May 2021 
+    start: Oct 2019
+    end: May 2021
     description: >
       As strange as it sounds looking at the job title - this is the point in my career where
       software development started to become something more than a hobby. While I've worked on
@@ -91,4 +124,3 @@ jobs:
       - Python
       - Docker
       - Postgres
-
