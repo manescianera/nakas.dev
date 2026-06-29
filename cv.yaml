@@ -2,21 +2,21 @@ name: Žygimantas
 email: root@nakas.dev
 location: 🇪🇺
 description: >
-  I am a software engineer with 6+ years of experience specializing in backend and data engineering.
-  Passionate about designing and building scalable, efficient systems that solve complex business
-  problems and enable data-driven decision-making.
+  Software engineer with 7 years across backend systems, data engineering, and
+  infrastructure. Go is my strongest language — it's been my backbone throughout.
+  TypeScript when the problem calls for it.
 
-  Skilled in architecting and implementing high-throughput ETL processes, real-time data pipelines,
-  and robust APIs. Experienced in optimizing backend systems for performance and reliability,
-  leveraging modern programming languages like Python and Go.
+  Started in web development and data extraction, moved deep into data engineering
+  with ETL pipelines and Snowflake, then shifted to full backend work — microservices,
+  event-driven systems, APIs, billing, and system architecture. Now building at an
+  AI startup.
 
-  Extensive experience deploying and managing applications on cloud platforms, including AWS, and
-  working with data platforms like Snowflake. Proficient in containerization and orchestration tools
-  such as Docker to streamline development and deployment workflows.
+  All in on AI. Not just scratching the surface — I build and set up AI-driven workflows
+  in my workplace, automate the repetitive work, and make every part of how I build
+  more efficient. If a process can be made smarter, I'm probably already doing it.
 
-  Comfortable delivering projects end-to-end, from initial concept to production deployment.
-  Led multiple initiatives in data-intensive environments and cutting-edge AI SaaS, driving
-  key technical decisions that shaped product direction and evolution.
+  I care about clean, reliable systems and straightforward communication. Keep things
+  simple and get things done.
 
 jobs:
   - title: Software Engineer
@@ -24,21 +24,21 @@ jobs:
     start: Sep 2025
     end: May 2026
     description: >
-      High-velocity AI startup based in San Francisco building a leading AI media generation
-      platform. Took ownership of multiple high-impact initiatives, influencing both product
-      direction and technical architecture. Led decisions on system design, ensuring scalability,
-      reliability, and performance for hundreds of thousands of users.
+      AI media generation startup in San Francisco. Took ownership of high-impact
+      initiatives across billing, vector search infrastructure, internal tooling,
+      and product decisions. Drove system architecture to keep things scalable and
+      reliable for hundreds of thousands of users.
 
-      Worked across the full stack, contributing to areas including billing systems, vector search
-      infrastructure, UI/UX decisions, and internal admin tools. Thrived in a polyglot environment,
-      primarily leveraging Go for backend systems while delivering production features in TypeScript.
-      Consistently drove projects from concept to execution in a fast-paced, ambiguous setting.
+      Go-first backend in a polyglot environment — shipped production features in
+      TypeScript when it fit. Ran projects from concept to execution in a fast-moving,
+      ambiguous setting.
 
-      Mastering frontier AI tools for software engineering, embracing the shift in how software is
-      built and consistently applying cutting-edge methods to maximize efficiency and impact
+      Went deep on AI tooling — not just using it, but setting up AI-driven workflows
+      across the team, automating the repetitive work, and pushing how far AI-assisted
+      development can go.
     skills:
       - Go
-      - Typescript
+      - TypeScript
       - System architecture
       - Project management
       - Context engineering
@@ -53,12 +53,13 @@ jobs:
     start: Aug 2022
     end: Mar 2025
     description: >
-      Started working in a startup with the same team. Got more responsibilities
-      and a fast-paced environment. Honed my skills both in software development
-      and data engineering. Architected, improved, and maintained various data systems
-      and pipelines. Deployed various applications on AWS and Snowflake. Had a chance
-      to adapt to very restrictive environments and work with previously untouched
-      tools like Ruby on Rails and Java.
+      Took on broader ownership in a faster-paced startup environment. Bridged data
+      engineering and backend development — maintained and scaled ETL pipelines and
+      data systems on AWS and Snowflake while increasingly taking on Go-based backend
+      work.
+
+      Adapted to restrictive environments and picked up unfamiliar tools along the
+      way, including Ruby on Rails and Java.
     skills:
       - Go
       - Python
@@ -73,11 +74,11 @@ jobs:
     start: Jun 2021
     end: Aug 2022
     description: >
-      This is where I got into a serious and experienced software team. Probably
-      the most challenging part of my career but also the most fruitful. I've
-      worked on various projects that involved building and maintaining complex
-      systems, data pipelines, and APIs. Here, I've learned teamwork, communication,
-      and problem-solving skills that have been invaluable in my career.
+      Joined an experienced, high-performing team. The most challenging and formative
+      stretch of my career. Built and maintained data pipelines, ETL processes, and
+      APIs. Went deep into data engineering — Snowflake, dbt, Python.
+
+      Learned teamwork, communication, and how to solve hard problems under pressure.
     skills:
       - Go
       - Python
@@ -87,40 +88,39 @@ jobs:
       - Postgres
       - dbt
       - Terraform
+  - title: Digital Marketing Specialist
+    company: Hostinger
+    start: Oct 2019
+    end: May 2021
+    description: >
+      Where software development became more than a hobby. Started in digital
+      marketing but became the team's go-to person for anything technical — writing
+      about technology, building internal tools, and creating websites as needed.
+
+      First real exposure to web development, Go, and Python. Started extracting
+      and working with data in earnest.
+    skills:
+      - Digital Marketing
+      - Cross-functional communication
+      - Web Development
+      - Go
+      - Python
+      - Docker
+      - Postgres
   - title: Software Engineer
     company: Freelance
-    start: Dec 2020
-    end: Jun 2021
+    start: Apr 2019
+    end: Present
     description: >
-      During the pandemic I had a bit more time which I decided to use to diversify
-      my skills and get better at software development. I've worked on various projects
-      from triangular arbitrage calculations for cryptocurrencies to web scraping and
-      data processing. Vast majority of my work was done in Go or Python. This is where
-      I've learned communicating with customers and building software that is easy to use
-      and understand.
+      Focused period of independent work early on. Built tools for crypto arbitrage
+      calculations, web scraping, and data processing — mostly in Go and Python.
+      Learned to communicate directly with clients and ship software that holds up.
+
+      Continued taking on freelance and consulting work alongside full-time roles,
+      shifting more toward advisory over time.
     skills:
       - Go
       - Python
       - Docker
       - Postgres
       - Digital Ocean
-  - title: Digital Marketing Specialist
-    company: Hostinger
-    start: Oct 2019
-    end: May 2021
-    description: >
-      As strange as it sounds looking at the job title - this is the point in my career where
-      software development started to become something more than a hobby. While I've worked on
-      various issues related to digital marketing, due to the format of our team I was a "go to"
-      person for all the things related to tech. These included writting blog posts about various
-      technologies, creating custom tools for our team, or even websites depending on marketing
-      needs. This is where I had a chance to learn about web development and use tools like Go and
-      Python.
-    skills:
-      - Digital Marketing
-      - Interteam Communication
-      - Web Development
-      - Go
-      - Python
-      - Docker
-      - Postgres
