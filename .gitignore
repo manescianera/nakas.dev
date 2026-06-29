@@ -1,2 +1,3 @@
 vendor/
 *_templ.go
+tmp/

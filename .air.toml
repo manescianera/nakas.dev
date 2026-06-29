@@ -1,0 +1,34 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  pre_cmd = ["templ generate"]
+  bin = "./tmp/main"
+  cmd = "go build -o ./tmp/main ."
+  delay = 200
+  exclude_dir = ["assets", "tmp", "vendor"]
+  exclude_regex = ["_test.go", "_templ.go"]
+  exclude_unchanged = true
+  follow_symlink = false
+  full_bin = ""
+  include_dir = []
+  include_ext = ["go", "templ", "yaml"]
+  kill_delay = 500
+  log = "air.log"
+  send_interrupt = true
+  stop_on_root = false
+
+[misc]
+  clean_on_exit = true
+
+[log]
+  time = true
+
+[color]
+  main = "magenta"
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"
+
+[screen]
+  clear_on_rebuild = false

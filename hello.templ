@@ -15,6 +15,9 @@ templ hello() {
             color: rgba(224, 222, 244, 0.8);
             border-radius: 10px;
         }
+        .hello p {
+            text-align: justify;
+        }
         a {
             color: #d7827e;
             text-decoration: none;
@@ -27,11 +30,13 @@ templ hello() {
     <div class="hello">
         @greeting() { @me("Žygimantas") }
 
-        <p>I am a software engineer.</p>
-        <p>Love messing around and experimenting with various tools and 
-        technologies. Trying to keep up with the cutting edge stuff.</p>
-        <p>Go is what I'm best at, while Python is becoming my unexpected friend. 
-        Also home is the best place to work.</p>
+        <p>Software engineer working across backend systems, data engineering,
+        and infrastructure. Go is my primary language and where I'm at my
+        best. TypeScript when the problem calls for it.</p>
+        <p>All in on AI. I build and use AI tooling daily to move faster and
+        cut out noise. If a workflow can be made smarter with AI, I'm
+        probably already doing it.</p>
+        <p>Home is where I work from, and that's the way I like it.</p>
         <p>For more of a professional profile, check out my <a href="/cv">CV</a>
         or reach me at <a href="mailto:root@nakas.dev">root@nakas.dev</a>.</p>
     </div>
