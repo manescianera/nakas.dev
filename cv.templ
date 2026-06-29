@@ -236,10 +236,31 @@ templ cv(data *CV) {
 
 templ CVTemplate(data *CV) {
     <style type="text/css">
+        :root {
+            --font: "0xProto", monospace;
+        }
+        @font-face {
+            font-family: "0xProto";
+            font-weight: 400;
+            font-style: normal;
+            src: url("/fonts/0xProto-Regular.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "0xProto";
+            font-weight: 700;
+            font-style: normal;
+            src: url("/fonts/0xProto-Bold.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "0xProto";
+            font-weight: 400;
+            font-style: italic;
+            src: url("/fonts/0xProto-Italic.ttf") format("truetype");
+        }
         body {
             background-color: #575279;
             color: #797593;
-            font-family: "JetBrains Mono", monospace;
+            font-family: var(--font);
         }
     </style>
 

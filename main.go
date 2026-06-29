@@ -28,6 +28,8 @@ func main() {
 		CVTemplate(cv).Render(r.Context(), w)
 	})
 
+	router.AddStatic("/fonts/", fontsHandler())
+
 	log.Println("starting server on " + addr)
 	log.Fatalf("error starting server: %v", http.ListenAndServe(addr, router))
 }
