@@ -1,269 +1,181 @@
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"strings"
 )
 
 func paragraphs(text string) []string {
-    var result []string
-    for _, line := range strings.Split(text, "\n") {
-        if trimmed := strings.TrimSpace(line); trimmed != "" {
-            result = append(result, trimmed)
-        }
-    }
-    return result
-}
-
-templ me(name string) {
-    <style type="text/css">
-       .name {
-            color: #d7827e;
-        }
-    </style>
-
-    <i class="name">{ name }</i>
-}
-
-templ greeting() {
-    <style type="text/css">
-        .greeting {
-            font-size: 2em;
-            font-weight: bold;
-            color: #b4637a; 
-        }
-    </style>
-
-    <h1 class="greeting">Hi! I'm { children... }.</h1>
-}
-
-templ location(location string) {
-    <p class="location">Based in { location }</p>
-}
-
-templ email(email string) {
-    <style type="text/css">
-        .email {
-            color: #d7827e;
-            text-decoration: none;
-        }
-        .email:hover {
-            text-decoration: underline;
-        }
-    </style>
-
-    <p>Reach me at 
-        <a class="email" 
-           href={ templ.SafeURL(fmt.Sprintf("mailto:%s", email)) }
-        >
-            { email }
-        </a>
-    </p>
-}
-
-templ info(loc, eml string) {
-    <style type="text/css">
-        .info {
-            font-size: 1em;
-            background-color: #191724;
-            border-radius: 5px;
-            padding: 0.1em 2em;
-        }
-    </style>
-
-    <div class="info">
-        @location(loc)
-        @email(eml)
-    </div>
-}
-
-templ header(name, location, email string) {
-    <style type="text/css">
-        .header {
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
-
-    <div class="header">
-        @greeting() { @me(name) }
-        @info(location, email)
-    </div>
-}
-
-templ description(description string) {
-    <style type="text/css">
-        .description {
-            font-size: 1.2em;
-            color: rgba(224,222,244, 0.8);
-        }
-    </style>
-
-    for _, d := range paragraphs(description) {
-        <p class="description">{ d }</p>
-    }
-}
-
-templ skill(skill string) {
-    <style type="text/css">
-        .skill {
-            border-radius: 5px;
-            background-color: rgba(49,116,143, 0.75);
-            color: black;
-            font-size: 1em;
-            padding: 0.2em 0.5em;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-    </style>
-
-    <div class="skill">{ skill }</div>
-}
-
-templ skills(skills []string) {
-    <style type="text/css">
-         .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5em;
-            padding: 1em 0;
-        }
-    </style>
-
-    <div class="skills">
-        for _, s := range skills {
-            @skill(s)
-        }
-    </div>
-}
-
-templ jobTitle(title, company string) {
-    <style type="text/css">
-        .job-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #b4637a;
-        }
-    </style>
-
-    <p class="job-title">{ title } at <i>{ company }</i></p>
-}
-
-templ startEnd(start, end string) {
-    <style type="text/css">
-        .text-range {
-            color: #9893a5;
-            font-size: 1.2em;
-        }
-    </style>
-
-    <p class="text-range">{ start } -> { end }</p>
-}
-
-templ jobHeader(title, company, start, end string) {
-    <style type="text/css">
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
-
-    <div class="job-header">
-        @jobTitle(title, company)
-        @startEnd(start, end)
-    </div>
-}
-
-templ jobDescription(description string) {
-    <style type="text/css">
-        .description {
-            font-size: 1em;
-        }
-    </style>
-
-    for _, d := range paragraphs(description) {
-        <p class="description">{ d }</p>
-    }
-}
-
-templ job(job Job) {
-    <style type="text/css">
-        .job {
-            background-color: #191724;
-            margin-top: 1em;
-            padding: 1em 3em;
-            border-radius: 5px;
-        }
-    </style>
-
-    <div class="job">
-        @jobHeader(job.Title, job.Company, job.Start, job.End)
-        @jobDescription(job.Description)
-        @skills(job.Skills)
-    </div>
-}
-
-templ jobs(jobs []Job) {
-    for _, j := range jobs {
-        @job(j)
-    }
-}
-
-templ cv(data *CV) {
-    <style type="text/css">
-        .cv {
-            display: flex;
-            flex-direction: column;
-
-            width: 56rem;
-            margin: 4em auto; 
-            padding: 2em 4em;
-
-            background-color: #1f1d2e;
-            border-radius: 10px;
-        }
-    </style>
-
-    <div class="cv">
-        @header(data.Name, data.Location, data.Email)
-        @description(data.Description)
-        @jobs(data.Jobs)
-    </div>
+	var result []string
+	for _, line := range strings.Split(text, "\n") {
+		if trimmed := strings.TrimSpace(line); trimmed != "" {
+			result = append(result, trimmed)
+		}
+	}
+	return result
 }
 
 templ CVTemplate(data *CV) {
-    <style type="text/css">
-        :root {
-            --font: "0xProto", monospace;
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 400;
-            font-style: normal;
-            src: url("/fonts/0xProto-Regular.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 700;
-            font-style: normal;
-            src: url("/fonts/0xProto-Bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 400;
-            font-style: italic;
-            src: url("/fonts/0xProto-Italic.ttf") format("truetype");
-        }
-        body {
-            background-color: #575279;
-            color: #797593;
-            font-family: var(--font);
-        }
-    </style>
+	<style>
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 400;
+			font-style: normal;
+			src: url("/fonts/0xProto-Regular.ttf") format("truetype");
+		}
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 700;
+			font-style: normal;
+			src: url("/fonts/0xProto-Bold.ttf") format("truetype");
+		}
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 400;
+			font-style: italic;
+			src: url("/fonts/0xProto-Italic.ttf") format("truetype");
+		}
+		:root {
+			--bg: #1F1F28;
+			--text: #DCDCDC;
+			--muted: #727169;
+			--link: #7E9CD8;
+			--hl: #E6C384;
+			--head: #76A9A4;
+			--iris: #957FB8;
+			--line: #2A2A37;
+		}
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: "0xProto", monospace;
+			font-size: 14px;
+			line-height: 1.7;
+			display: flex;
+			justify-content: center;
+		}
+		.page {
+			max-width: 32rem;
+			padding: 4rem 0;
+			text-align: justify;
+		}
+		/* Header */
+		header {
+			text-align: left;
+			margin-bottom: 1.75rem;
+		}
+		.header-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+		header h1 {
+			font-size: 1.4rem;
+			font-weight: 700;
+			color: var(--link);
+		}
+		.header-right { text-align: right; }
+		header .role { color: var(--muted); font-size: 0.9rem; }
+		header .meta {
+			color: var(--muted);
+			font-size: 0.82rem;
+			margin-top: 0.15rem;
+		}
+		header .meta a {
+			color: var(--link);
+			text-decoration: none;
+		}
+		/* Sections */
+		.section { margin-bottom: 1.75rem; }
+		.label {
+			font-size: 0.7rem;
+			letter-spacing: 0.25em;
+			color: var(--muted);
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+		}
+		.section p { margin-bottom: 1.75rem; }
+		.section p:last-child { margin-bottom: 0; }
+		/* Jobs */
+		.job {
+			padding-top: 1.75rem;
+			margin-top: 1.75rem;
+			border-top: 1px solid var(--line);
+		}
+		.job:first-of-type {
+			border-top: none;
+			padding-top: 0;
+			margin-top: 0;
+		}
+		.job-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			margin-bottom: 1rem;
+		}
+		.job-left h2 {
+			font-size: 0.95rem;
+			font-weight: 700;
+			color: var(--head);
+		}
+		.job-left .dates {
+			color: var(--muted);
+			font-size: 0.8rem;
+			margin-top: 0.15rem;
+		}
+		.company {
+			color: var(--muted);
+			font-style: italic;
+			font-size: 0.9rem;
+		}
+		.job p { margin-bottom: 1.75rem; }
+		.job p:last-of-type { margin-bottom: 0; }
+		.skills {
+			color: var(--iris);
+			font-size: 0.8rem;
+			margin-top: 1rem;
+		}
+	</style>
+	<html><body>
+		<div class="page">
+			<header>
+				<div class="header-row">
+					<h1>{ data.Name } Nakas</h1>
+					<div class="header-right">
+						<div class="role">Software Engineer</div>
+						<div class="meta">
+							<a href={ templ.SafeURL(fmt.Sprintf("mailto:%s", data.Email)) }>{ data.Email }</a> · { data.Location }
+						</div>
+					</div>
+				</div>
+			</header>
 
-    <html><body> @cv(data) </body></html>
+			<div class="section">
+				<div class="label">About</div>
+				for _, p := range paragraphs(data.Description) {
+					<p>{ p }</p>
+				}
+			</div>
+
+			<div class="section">
+				<div class="label">Experience</div>
+				for _, job := range data.Jobs {
+					<div class="job">
+						<div class="job-header">
+							<div class="job-left">
+								<h2>{ job.Title }</h2>
+								<div class="dates">{ job.Start } — { job.End }</div>
+							</div>
+							<div class="company">{ job.Company }</div>
+						</div>
+						for _, p := range paragraphs(job.Description) {
+							<p>{ p }</p>
+						}
+						<div class="skills">{ strings.Join(job.Skills, " · ") }</div>
+					</div>
+				}
+			</div>
+		</div>
+	</body></html>
 }
-

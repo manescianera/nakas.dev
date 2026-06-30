@@ -1,86 +1,63 @@
 package main
 
-templ hello() {
-    <style type="text/css">
-        .hello {
-            display: flex;
-            flex-direction: column;
-
-            font-size: 1.2em;
-
-            width: 32rem;
-            padding: 2em 4em;
-
-            background-color: #1f1d2e;
-            color: rgba(224, 222, 244, 0.8);
-            border-radius: 10px;
-        }
-        .hello p {
-            text-align: justify;
-        }
-        a {
-            color: #d7827e;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
-    <div class="hello">
-        @greeting() { @me("Žygimantas") }
-
-        <p>Software engineer working across backend systems, data engineering,
-        and infrastructure. Go is my primary language and where I'm at my
-        best. TypeScript when the problem calls for it.</p>
-        <p>All in on AI. I build and use AI tooling daily to move faster and
-        cut out noise. If a workflow can be made smarter with AI, I'm
-        probably already doing it.</p>
-        <p>Home is where I work from, and that's the way I like it.</p>
-        <p>For more of a professional profile, check out my <a href="/cv">CV</a>
-        or reach me at <a href="mailto:root@nakas.dev">root@nakas.dev</a>.</p>
-    </div>
-}
-
 templ HelloTemplate() {
-    <style type="text/css">
-        :root {
-            --font: "0xProto", monospace;
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 400;
-            font-style: normal;
-            src: url("/fonts/0xProto-Regular.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 700;
-            font-style: normal;
-            src: url("/fonts/0xProto-Bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "0xProto";
-            font-weight: 400;
-            font-style: italic;
-            src: url("/fonts/0xProto-Italic.ttf") format("truetype");
-        }
-        html {
-            overflow-y: hidden;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            background-color: #575279;
-            color: #797593;
-            font-family: var(--font);
-            height: 100vh;
-        }
-    </style>
-
-    <html><body> @hello() </body></html>
+	<style>
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 400;
+			font-style: normal;
+			src: url("/fonts/0xProto-Regular.ttf") format("truetype");
+		}
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 700;
+			font-style: normal;
+			src: url("/fonts/0xProto-Bold.ttf") format("truetype");
+		}
+		@font-face {
+			font-family: "0xProto";
+			font-weight: 400;
+			font-style: italic;
+			src: url("/fonts/0xProto-Italic.ttf") format("truetype");
+		}
+		:root {
+			--bg: #1F1F28;
+			--text: #DCDCDC;
+			--muted: #727169;
+			--link: #7E9CD8;
+		--hl: #E6C384;
+		}
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		html, body { height: 100%; }
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: "0xProto", monospace;
+			font-size: 14px;
+			line-height: 1.8;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.square {
+			max-width: 28rem;
+			text-align: justify;
+		}
+		.square p { margin-bottom: 1.75rem; }
+		.square p:last-child { margin-bottom: 0; }
+		a {
+			color: var(--link);
+			text-decoration: none;
+		}
+		a:hover { text-decoration: underline; }
+		.hl { color: var(--hl); font-weight: 700; }
+	</style>
+	<html><body>
+		<div class="square">
+			<p><span class="hl">Software engineer</span> working across backend systems, data engineering, and infrastructure. <span class="hl">Go</span> is my primary language and where I'm at my best. <span class="hl">TypeScript</span> when the problem calls for it.</p>
+			<p>All in on AI. I build and use AI tooling daily to move faster and cut out noise. If a workflow can be made smarter with AI, I'm probably already doing it.</p>
+			<p>Home is where I work from, and that's the way I like it.</p>
+			<p>For more of a professional profile, check out my <a href="/cv">CV</a> or reach me at <a href="mailto:root@nakas.dev">root@nakas.dev</a>.</p>
+		</div>
+	</body></html>
 }
-
