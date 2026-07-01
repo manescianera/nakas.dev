@@ -120,3 +120,7 @@ jobs:
       - Docker
       - Postgres
       - Digital Ocean
+      - Web scraping
+      - API development
+      - Consulting
+      - AI driven development
