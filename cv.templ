@@ -69,7 +69,7 @@ templ CVTemplate(data *CV) {
 		.page {
 			max-width: 32rem;
 		margin: 0 auto;
-			padding: 4rem 0 7rem 0;
+			padding: 4rem 1.5rem 7rem 1.5rem;
 			text-align: justify;
 		}
 		/* Header */
@@ -149,8 +149,14 @@ templ CVTemplate(data *CV) {
 			margin-top: 1rem;
 		}
 		.hl { color: var(--hl); font-weight: 700; }
+		@media (max-width: 34rem) {
+			.header-row { flex-direction: column; }
+			.header-right { text-align: left; margin-top: 0.5rem; }
+			.job-header { flex-direction: column; }
+			.company { margin-top: 0.25rem; }
+		}
 	</style>
-	<html><body>
+	<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body>
 		<div class="page">
 			<header>
 				<div class="header-row">

@@ -42,6 +42,7 @@ templ HelloTemplate() {
 		}
 		.square {
 			max-width: 28rem;
+			padding: 0 1.5rem;
 			text-align: justify;
 		}
 		.square p { margin-bottom: 1.75rem; }
@@ -53,7 +54,7 @@ templ HelloTemplate() {
 		a:hover { text-decoration: underline; }
 		.hl { color: var(--hl); font-weight: 700; }
 	</style>
-	<html><body>
+	<html><head><meta name="viewport" content="width=device-width, initial-scale=1"/></head><body>
 		<div class="square">
 			<p><span class="hl">Software engineer</span> working across backend systems, data engineering, and infrastructure. <span style="color: var(--go)">Go</span> is my primary language and where I'm at my best. TypeScript or Python when the problem calls for it.</p>
 			<p><i>All in on AI</i>. I build and use AI tooling daily to move faster and cut out noise. If a workflow can be made smarter with AI, I'm probably already doing it.</p>
