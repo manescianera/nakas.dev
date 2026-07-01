@@ -36,14 +36,14 @@ jobs:
       - Go
       - TypeScript
       - System architecture
-      - Project management
+      - Project leadership
       - Context engineering
-      - AI assisted development
-      - Data pipelines
+      - AI driven development
+      - Data processing
       - Docker
       - Postgres
-      - Neon
-      - Railway
+      - Serverless
+      - CI/CD
   - title: Software Engineer
     company: External Tables
     start: Aug 2022
