@@ -4,15 +4,14 @@ location: 🇪🇺
 description: >
   Software engineer with 7 years across backend systems, data engineering, and
   infrastructure. Go is my strongest language — it's been my backbone throughout.
-  TypeScript when the problem calls for it.
+  TypeScript or Python when the problem calls for it.
 
   Started in web development and data extraction, moved deep into data engineering
   with ETL pipelines and Snowflake, then shifted to full backend work — microservices,
-  event-driven systems, APIs, billing, and system architecture. Now building at an
+  event-driven systems, APIs, billing, and system architecture. Most recently built at an
   AI startup.
 
-  All in on AI. Not just scratching the surface — I build and set up AI-driven workflows
-  in my workplace, automate the repetitive work, and make every part of how I build
+  All in on AI. Not just scratching the surface — I build and set up AI-driven workflows, automate the repetitive work, and make every part of how I build
   more efficient. If a process can be made smarter, I'm probably already doing it.
 
   I care about clean, reliable systems and straightforward communication. Keep things
@@ -24,18 +23,15 @@ jobs:
     start: Sep 2025
     end: May 2026
     description: >
-      AI media generation startup in San Francisco. Took ownership of high-impact
-      initiatives across billing, vector search infrastructure, internal tooling,
-      and product decisions. Drove system architecture to keep things scalable and
-      reliable for hundreds of thousands of users.
+      AI media generation startup in San Francisco. Took ownership across billing,
+      vector search, content safety, and internal tooling. Built systems from scratch.
 
-      Go-first backend in a polyglot environment — shipped production features in
-      TypeScript when it fit. Ran projects from concept to execution in a fast-moving,
-      ambiguous setting.
+      Go for the backend, TypeScript for AI pipelines. Worked across the stack —
+      from APIs and services to admin tooling and database optimization. Built things
+      end to end and made sure they kept running.
 
       Went deep on AI tooling — not just using it, but setting up AI-driven workflows
-      across the team, automating the repetitive work, and pushing how far AI-assisted
-      development can go.
+      across the team, automating the repetitive work, and pushing how far AI-assisted development can go.
     skills:
       - Go
       - TypeScript

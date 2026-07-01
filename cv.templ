@@ -2,8 +2,18 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
+
+var goRegexp = regexp.MustCompile(`\bGo\b`)
+
+func highlightText(text string) string {
+	text = strings.Replace(text, "Software engineer", `<span class="hl">Software engineer</span>`, 1)
+	text = goRegexp.ReplaceAllString(text, `<span style="color: var(--go)">Go</span>`)
+	text = strings.Replace(text, "All in on AI", `<i>All in on AI</i>`, 1)
+	return text
+}
 
 func paragraphs(text string) []string {
 	var result []string
@@ -41,6 +51,7 @@ templ CVTemplate(data *CV) {
 			--muted: #727169;
 			--link: #7E9CD8;
 			--hl: #E6C384;
+		--go: #00ADD8;
 			--head: #76A9A4;
 			--iris: #957FB8;
 			--line: #2A2A37;
@@ -136,6 +147,7 @@ templ CVTemplate(data *CV) {
 			font-size: 0.8rem;
 			margin-top: 1rem;
 		}
+		.hl { color: var(--hl); font-weight: 700; }
 	</style>
 	<html><body>
 		<div class="page">
@@ -154,7 +166,7 @@ templ CVTemplate(data *CV) {
 			<div class="section">
 				<div class="label">About</div>
 				for _, p := range paragraphs(data.Description) {
-					<p>{ p }</p>
+					<p>@templ.Raw(highlightText(p))</p>
 				}
 			</div>
 
